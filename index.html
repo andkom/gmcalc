@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GM (Geiger-Muller) Tube Conversion Factor Calculator</title>
+        <meta name="keywords" content="gm tube geiger muller tube conversion rate factor calculator" />
+        <meta name="description" content="GM (Geiger Muller) tube conversion factor (rate, ratio) calculator" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="lib/style.css" />
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/tubes.js"></script>
+        <script type="text/javascript" src="lib/calc.js"></script>
+    </head>
+    <body>
+        <h1>GM Tube Conversion Factor Calculator</h1>
+        <form id="form_factor">
+            <p>Input data from tube datasheet:</p>
+            <p>
+                <input id="dose" type="text" value="0.17" class="number" />
+                <select id="dose_unit">
+                    <option value="ur">&micro;R</option>
+                    <option value="usv" selected="selected">&micro;Sv</option>
+                </select>
+                /
+                <input id="dose_period" type="text" value="1" class="number" />
+                <select id="dose_period_unit">
+                    <option value="second">Second</option>
+                    <option value="minute">Minute</option>
+                    <option value="hour" selected="selected">Hour</option>
+                </select>
+                = <input id="count" type="text" value="30" class="number" />
+                counts / <input id="count_period" type="text" value="1" class="number" />
+                <select id="count_period_unit">
+                    <option value="second">Second</option>
+                    <option value="minute" selected="selected">Minute</option>
+                    <option value="hour">Hour</option>
+                </select>
+            </p>
+            <p>or <select id="tube"><option value="">Select Tube</option></select></p>
+            <p>Result:</p>
+            <p><input id="result" type="text" value="?" readonly="readonly" style="width: 500px;" /></p>
+            <p>= <input id="result_urs" type="text" value="?" class="number" readonly="readonly" /> &micro;R/s</p>
+            <p>= <input id="result_urh" type="text" value="?" class="number" readonly="readonly" /> &micro;R/h</p>
+            <p>= <input id="result_usvs" type="text" value="?" class="number" readonly="readonly" /> &micro;Sv/s</p>
+            <p>= <input id="result_usvh" type="text" value="?" class="number" readonly="readonly" /> &micro;Sv/h</p>
+            <p>= <input id="result_cps" type="text" value="?" class="number" readonly="readonly" /> CPS</p>
+            <p>= <input id="result_cpm" type="text" value="?" class="number" readonly="readonly" /> CPM</p>
+            <p>= <input id="result_cpm_to_urh" type="text" value="?" class="number" readonly="readonly" /> CPM &rarr; &micro;R/h ratio</p>
+            <p>= <input id="result_cpm_to_usvh" type="text" value="?" class="number" readonly="readonly" /> <strong>CPM &rarr; &micro;Sv/h ratio</strong> <small>Using by <a href="https://sites.google.com/site/diygeigercounter/">DIYGeigerCounter</a></small></small></p>
+            <p>= <input id="result_cpm_to_urs" type="text" value="?" class="number" readonly="readonly" /> CPM &rarr; &micro;R/s ratio</p>
+            <p>= <input id="result_cpm_to_usvs" type="text" value="?" class="number" readonly="readonly" /> CPM &rarr; &micro;Sv/s ratio</p>
+            <p>= <input id="result_cps_to_urh" type="text" value="?" class="number" readonly="readonly" /> CPS &rarr; &micro;R/h ratio</p>
+            <p>= <input id="result_cps_to_usvh" type="text" value="?" class="number" readonly="readonly" /> CPS &rarr; &micro;Sv/h ratio</p>
+            <p>= <input id="result_cps_to_urs" type="text" value="?" class="number" readonly="readonly" /> CPS &rarr; &micro;R/s ratio</p>
+            <p>= <input id="result_cps_to_usvs" type="text" value="?" class="number" readonly="readonly" /> CPS &rarr; &micro;Sv/s ratio</p>
+            <p>= <input id="result_cps_to_10usv" type="text" value="?" class="number" readonly="readonly" /> <strong>CPS &rarr; 10 &micro;Sv/h (1 mR/h) ratio</strong> <small>Using by <a href="https://sites.google.com/site/geigerbot/">Geiger Bot</a></small></p>
+            <p>= <input id="result_cps_per_urs" type="text" value="?" class="number" readonly="readonly" /> <strong>CPS/uR/s</strong> <small>Using in most soviet tube datasheets</small></p>
+            <p><input type="submit" value="Calculate" /><input type="reset" value="Reset" /></p>
+        </form>
+    </body>
+</html>
