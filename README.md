@@ -2,6 +2,8 @@
 
 GM (Geiger-Muller) Tube Conversion Factor Calculator
 
+URL: https://andkom.github.io/gmcalc/
+
 ## Pre-defined GM tubes
 
 * SBM-20 (СБМ-20)
