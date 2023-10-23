@@ -1,60 +1,174 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>GM (Geiger-Muller) Tube Conversion Factor Calculator</title>
-        <meta name="keywords" content="gm tube geiger muller tube conversion rate factor calculator" />
-        <meta name="description" content="GM (Geiger Muller) tube conversion factor (rate, ratio) calculator" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="lib/style.css" />
-        <script type="text/javascript" src="lib/jquery.js"></script>
-        <script type="text/javascript" src="lib/tubes.js"></script>
-        <script type="text/javascript" src="lib/calc.js"></script>
-    </head>
-    <body>
-        <h1>GM Tube Conversion Factor Calculator</h1>
-        <form id="form_factor">
-            <p>Input data from tube datasheet:</p>
-            <p>
-                <input id="dose" type="text" value="0.17" class="number" />
-                <select id="dose_unit">
-                    <option value="ur">&micro;R</option>
-                    <option value="usv" selected="selected">&micro;Sv</option>
-                </select>
-                /
-                <input id="dose_period" type="text" value="1" class="number" />
-                <select id="dose_period_unit">
-                    <option value="second">Second</option>
-                    <option value="minute">Minute</option>
-                    <option value="hour" selected="selected">Hour</option>
-                </select>
-                = <input id="count" type="text" value="30" class="number" />
-                counts / <input id="count_period" type="text" value="1" class="number" />
-                <select id="count_period_unit">
-                    <option value="second">Second</option>
-                    <option value="minute" selected="selected">Minute</option>
-                    <option value="hour">Hour</option>
-                </select>
-            </p>
-            <p>or <select id="tube"><option value="">Select Tube</option></select></p>
-            <p>Result:</p>
-            <p><input id="result" type="text" value="?" readonly="readonly" style="width: 500px;" /></p>
-            <p>= <input id="result_urs" type="text" value="?" class="number" readonly="readonly" /> &micro;R/s</p>
-            <p>= <input id="result_urh" type="text" value="?" class="number" readonly="readonly" /> &micro;R/h</p>
-            <p>= <input id="result_usvs" type="text" value="?" class="number" readonly="readonly" /> &micro;Sv/s</p>
-            <p>= <input id="result_usvh" type="text" value="?" class="number" readonly="readonly" /> &micro;Sv/h</p>
-            <p>= <input id="result_cps" type="text" value="?" class="number" readonly="readonly" /> CPS</p>
-            <p>= <input id="result_cpm" type="text" value="?" class="number" readonly="readonly" /> CPM</p>
-            <p>= <input id="result_cpm_to_urh" type="text" value="?" class="number" readonly="readonly" /> CPM &rarr; &micro;R/h ratio</p>
-            <p>= <input id="result_cpm_to_usvh" type="text" value="?" class="number" readonly="readonly" /> <strong>CPM &rarr; &micro;Sv/h ratio</strong> <small>Using by <a href="https://sites.google.com/site/diygeigercounter/">DIYGeigerCounter</a></small></small></p>
-            <p>= <input id="result_cpm_to_urs" type="text" value="?" class="number" readonly="readonly" /> CPM &rarr; &micro;R/s ratio</p>
-            <p>= <input id="result_cpm_to_usvs" type="text" value="?" class="number" readonly="readonly" /> CPM &rarr; &micro;Sv/s ratio</p>
-            <p>= <input id="result_cps_to_urh" type="text" value="?" class="number" readonly="readonly" /> CPS &rarr; &micro;R/h ratio</p>
-            <p>= <input id="result_cps_to_usvh" type="text" value="?" class="number" readonly="readonly" /> CPS &rarr; &micro;Sv/h ratio</p>
-            <p>= <input id="result_cps_to_urs" type="text" value="?" class="number" readonly="readonly" /> CPS &rarr; &micro;R/s ratio</p>
-            <p>= <input id="result_cps_to_usvs" type="text" value="?" class="number" readonly="readonly" /> CPS &rarr; &micro;Sv/s ratio</p>
-            <p>= <input id="result_cps_to_10usv" type="text" value="?" class="number" readonly="readonly" /> <strong>CPS &rarr; 10 &micro;Sv/h (1 mR/h) ratio</strong> <small>Using by <a href="https://sites.google.com/site/geigerbot/">Geiger Bot</a></small></p>
-            <p>= <input id="result_cps_per_urs" type="text" value="?" class="number" readonly="readonly" /> <strong>CPS/uR/s</strong> <small>Using in most soviet tube datasheets</small></p>
-            <p><input type="submit" value="Calculate" /><input type="reset" value="Reset" /></p>
-        </form>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GM (Geiger-Muller) Tube Conversion Factor Calculator</title>
+
+    <meta name="keywords" content="gm tube geiger muller tube conversion rate factor calculator"/>
+    <meta name="description" content="GM (Geiger Muller) tube conversion factor (rate, ratio) calculator"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          integrity="sha256-MBffSnbbXwHCuZtgPYiwMQbfE7z+GOZ7fBPCNB06Z98=" crossorigin="anonymous">
+</head>
+
+<body class="container">
+<h1 class="my-3">GM Tube Conversion Factor Calculator</h1>
+
+<form id="form_factor" role="form" class="mb-3">
+    <div class="mb-1">Select tube:</div>
+
+    <div class="mb-3">
+        <select id="tube" class="form-select"></select>
+    </div>
+
+    <div class="mb-1">or input data from tube datasheet:</div>
+
+    <div class="row row-cols-lg-auto g-1 align-items-center mb-3">
+        <div class="col-12">
+            <input id="dose" type="text" value="0.17" class="form-control"/>
+        </div>
+        <div class="col-12">
+            <select id="dose_unit" class="form-select">
+                <option value="ur">&micro;R</option>
+                <option value="usv" selected="selected">&micro;Sv</option>
+            </select>
+        </div>
+        <div class="col-12">/</div>
+        <div class="col-12">
+            <input id="dose_period" type="text" value="1" class="form-control"/>
+        </div>
+        <div class="col-12">
+            <select id="dose_period_unit" class="form-select">
+                <option value="second">Second</option>
+                <option value="minute">Minute</option>
+                <option value="hour" selected="selected">Hour</option>
+            </select>
+        </div>
+        <div class="col-12">=</div>
+        <div class="col-12">
+            <input id="count" type="text" value="30" class="form-control"/>
+        </div>
+        <div class="col-12">counts</div>
+        <div class="col-12">
+            <input id="count_period" type="text" value="1" class="form-control"/>
+        </div>
+        <div class="col-12">/</div>
+        <div class="col-12">
+            <select id="count_period_unit" class="form-select">
+                <option value="second">Second</option>
+                <option value="minute" selected="selected">Minute</option>
+                <option value="hour">Hour</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calculate</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+</form>
+
+<h3>Results</h3>
+
+<p id="result" class="text-primary"></p>
+
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <td id="result_urs">?</td>
+        <td>&micro;R/s</td>
+    </tr>
+    <tr>
+        <td id="result_urh">?</td>
+        <td>&micro;R/h</td>
+    </tr>
+    <tr>
+        <td id="result_usvs">?</td>
+        <td>&micro;Sv/s</td>
+    </tr>
+    <tr>
+        <td id="result_usvh">?</td>
+        <td>&micro;Sv/h</td>
+    </tr>
+    <tr>
+        <td id="result_cps">?</td>
+        <td>CPS</td>
+    </tr>
+    <tr>
+        <td id="result_cpm">?</td>
+        <td>CPM</td>
+    </tr>
+    <tr>
+        <td id="result_cpm_to_urh">?</td>
+        <td>CPM &rarr; &micro;R/h ratio</td>
+    </tr>
+    <tr>
+        <td id="result_cpm_to_usvh">?</td>
+        <td>
+            <strong>CPM &rarr; &micro;Sv/h ratio</strong>
+            <small>used by <a href="https://sites.google.com/site/diygeigercounter/">DIYGeigerCounter</a></small>
+        </td>
+    </tr>
+    <tr>
+        <td id="result_cpm_to_urs">?</td>
+        <td>CPM &rarr; &micro;R/s ratio</td>
+    </tr>
+    <tr>
+        <td id="result_cpm_to_usvs">?</td>
+        <td>CPM &rarr; &micro;Sv/s ratio</td>
+    </tr>
+    <tr>
+        <td id="result_cps_to_urh">?</td>
+        <td>CPS &rarr; &micro;R/h ratio</td>
+    </tr>
+    <tr>
+        <td id="result_cps_to_usvh">?</td>
+        <td>CPS &rarr; &micro;Sv/h ratio</td>
+    </tr>
+    <tr>
+        <td id="result_cps_to_urs">?</td>
+        <td>CPS &rarr; &micro;R/s ratio</td>
+    </tr>
+    <tr>
+        <td id="result_cps_to_usvs">?</td>
+        <td>CPS &rarr; &micro;Sv/s ratio</td>
+    </tr>
+    <tr>
+        <td id="result_cps_to_10usv">?</td>
+        <td>
+            <strong>CPS &rarr; 10 &micro;Sv/h (1 mR/h) ratio</strong>
+            <small>used by <a href="https://sites.google.com/site/geigerbot/">Geiger Bot</a></small>
+        </td>
+    </tr>
+    <tr>
+        <td id="result_cps_per_urs">?</td>
+        <td><strong>CPS/uR/s</strong> <small>used in most soviet tube datasheets</small></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="text-muted">
+    <p>The <strong>Geiger-Muller tube</strong> (also known as a <strong>Geiger counter</strong>) is a device used to
+        detect and measure ionizing radiation, such as alpha, beta, and gamma <strong>radiation</strong>. The conversion
+        factor, in the context of a Geiger-Muller tube, is a value that represents the relationship between the number
+        of electrical pulses generated by the tube and the amount of ionizing radiation it detects.</p>
+
+    <p>The <strong>conversion factor</strong> is typically given in terms of counts per unit of radiation exposure or
+        dose. It is specific to the type of radiation being detected and the particular characteristics of the
+        Geiger-Muller tube. The conversion factor allows you to convert the <strong>electrical pulses</strong> produced
+        by the tube into a meaningful measure of radiation exposure, such as dose in units like
+        <strong>roentgens</strong> (R) or <strong>sieverts</strong>(Sv).</p>
+
+    <p>It's important to note that the conversion factor can vary between different types of Geiger-Muller tubes and the
+        specific radiation being detected. Therefore, it's essential to use the <strong>appropriate conversion
+            factor</strong> for your specific application and radiation source to get an accurate measurement of
+        radiation exposure or dose.</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="lib/tubes.js"></script>
+<script type="text/javascript" src="lib/calc.js"></script>
+</body>
 </html>

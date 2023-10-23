@@ -10,8 +10,6 @@ URL: https://andkom.github.io/gmcalc/
 * SBT-9 (СБТ-9)
 * SBT-10A (СБТ-10А)
 * SBT-11A (СБТ-11А)
-* SI-8Б (СИ-8Б)
+* SI-8B (СИ-8Б)
 * LND 712
 * LND 7317
-
-
