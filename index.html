@@ -11,160 +11,296 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           integrity="sha256-MBffSnbbXwHCuZtgPYiwMQbfE7z+GOZ7fBPCNB06Z98=" crossorigin="anonymous">
+
+    <style>
+        :root {
+            --paper: #efe8d5;
+            --paper-2: #e6dcc7;
+            --ink: #1f1f1b;
+            --green: #1e8f4f;
+            --red: #b4412b;
+            --steel: #8b8f90;
+            --shadow: rgba(0, 0, 0, 0.18);
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 20% 15%, rgba(0, 0, 0, 0.05) 0 2px, transparent 3px) 0 0 / 24px 24px,
+                radial-gradient(circle at 70% 65%, rgba(0, 0, 0, 0.04) 0 1.5px, transparent 3px) 0 0 / 22px 22px,
+                linear-gradient(180deg, var(--paper), var(--paper-2));
+            color: var(--ink);
+            font-family: "IBM Plex Mono", "PT Mono", "Courier New", monospace;
+        }
+
+        .sheet {
+            background: rgba(239, 232, 213, 0.9);
+            border: 2px solid var(--ink);
+            box-shadow: 0 10px 30px var(--shadow);
+            padding: 24px 24px 18px 24px;
+            margin: 18px auto 24px auto;
+        }
+
+        .title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .title-row h1 {
+            font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .form-label-lite {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            color: #3a3a35;
+        }
+
+        .panel {
+            border: 2px solid var(--ink);
+            padding: 14px;
+            background: #f7f2e4;
+            position: relative;
+        }
+
+        .form-control,
+        .form-select {
+            border: 2px solid var(--ink);
+            border-radius: 0;
+            background: #fffaf0;
+            color: var(--ink);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 0.2rem rgba(30, 143, 79, 0.2);
+        }
+
+        .btn-primary {
+            background: var(--green);
+            border: 2px solid var(--ink);
+            border-radius: 0;
+        }
+
+        .btn-secondary {
+            background: var(--steel);
+            border: 2px solid var(--ink);
+            border-radius: 0;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            filter: brightness(0.95);
+        }
+
+        .result-banner {
+            border: 2px solid var(--ink);
+            background: #f0f7ef;
+            padding: 10px 12px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .table {
+            border: 2px solid var(--ink);
+        }
+
+        .table td {
+            border: 1px solid var(--ink);
+            padding: 10px 12px;
+        }
+
+        .muted-block {
+            border-top: 2px dashed var(--ink);
+            padding-top: 12px;
+            font-size: 0.92rem;
+        }
+
+        .gridline {
+            height: 6px;
+            background: repeating-linear-gradient(90deg, var(--ink) 0 6px, transparent 6px 12px);
+            opacity: 0.15;
+            margin: 12px 0;
+        }
+
+        @media (max-width: 768px) {
+            .title-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 
 <body class="container">
-<h1 class="my-3">GM Tube Conversion Factor Calculator</h1>
-
-<form id="form_factor" role="form" class="mb-3">
-    <div class="mb-1">Select tube:</div>
-
-    <div class="mb-3">
-        <select id="tube" class="form-select">
-            <option value="">Select tube</option>
-        </select>
+<div class="sheet">
+    <div class="title-row">
+        <h1>GM Tube Conversion Factor Calculator</h1>
     </div>
 
-    <div class="mb-1">or input data from tube datasheet:</div>
+    <form id="form_factor" role="form" class="mb-4 panel">
+        <div class="mb-1 form-label-lite">Select tube:</div>
 
-    <div class="row row-cols-lg-auto g-1 align-items-center mb-3">
-        <div class="col-12">
-            <input id="dose" type="text" value="0.17" class="form-control"/>
-        </div>
-        <div class="col-12">
-            <select id="dose_unit" class="form-select">
-                <option value="ur">&micro;R</option>
-                <option value="usv" selected="selected">&micro;Sv</option>
+        <div class="mb-3">
+            <select id="tube" class="form-select">
+                <option value="">Select tube</option>
             </select>
         </div>
-        <div class="col-12">/</div>
-        <div class="col-12">
-            <input id="dose_period" type="text" value="1" class="form-control"/>
+
+        <div class="mb-1 form-label-lite">or input data from tube datasheet:</div>
+
+        <div class="row row-cols-lg-auto g-1 align-items-center mb-3">
+            <div class="col-12">
+                <input id="dose" type="text" value="0.17" class="form-control"/>
+            </div>
+            <div class="col-12">
+                <select id="dose_unit" class="form-select">
+                    <option value="ur">&micro;R</option>
+                    <option value="usv" selected="selected">&micro;Sv</option>
+                </select>
+            </div>
+            <div class="col-12 text-center">/</div>
+            <div class="col-12">
+                <input id="dose_period" type="text" value="1" class="form-control"/>
+            </div>
+            <div class="col-12">
+                <select id="dose_period_unit" class="form-select">
+                    <option value="second">Second</option>
+                    <option value="minute">Minute</option>
+                    <option value="hour" selected="selected">Hour</option>
+                </select>
+            </div>
+            <div class="col-12 text-center">=</div>
+            <div class="col-12">
+                <input id="count" type="text" value="30" class="form-control"/>
+            </div>
+            <div class="col-12 text-center">counts</div>
+            <div class="col-12">
+                <input id="count_period" type="text" value="1" class="form-control"/>
+            </div>
+            <div class="col-12 text-center">/</div>
+            <div class="col-12">
+                <select id="count_period_unit" class="form-select">
+                    <option value="second">Second</option>
+                    <option value="minute" selected="selected">Minute</option>
+                    <option value="hour">Hour</option>
+                </select>
+            </div>
         </div>
-        <div class="col-12">
-            <select id="dose_period_unit" class="form-select">
-                <option value="second">Second</option>
-                <option value="minute">Minute</option>
-                <option value="hour" selected="selected">Hour</option>
-            </select>
+
+        <div class="d-flex flex-wrap gap-2">
+            <button type="submit" class="btn btn-primary">Calculate</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
         </div>
-        <div class="col-12">=</div>
-        <div class="col-12">
-            <input id="count" type="text" value="30" class="form-control"/>
-        </div>
-        <div class="col-12">counts</div>
-        <div class="col-12">
-            <input id="count_period" type="text" value="1" class="form-control"/>
-        </div>
-        <div class="col-12">/</div>
-        <div class="col-12">
-            <select id="count_period_unit" class="form-select">
-                <option value="second">Second</option>
-                <option value="minute" selected="selected">Minute</option>
-                <option value="hour">Hour</option>
-            </select>
-        </div>
+    </form>
+
+    <div class="gridline"></div>
+
+    <h3 class="form-label-lite">Results</h3>
+
+    <p id="result" class="result-banner text-primary">Please select tube.</p>
+
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <td id="result_urs">?</td>
+            <td>&micro;R/s</td>
+        </tr>
+        <tr>
+            <td id="result_urh">?</td>
+            <td>&micro;R/h</td>
+        </tr>
+        <tr>
+            <td id="result_usvs">?</td>
+            <td>&micro;Sv/s</td>
+        </tr>
+        <tr>
+            <td id="result_usvh">?</td>
+            <td>&micro;Sv/h</td>
+        </tr>
+        <tr>
+            <td id="result_cps">?</td>
+            <td>CPS</td>
+        </tr>
+        <tr>
+            <td id="result_cpm">?</td>
+            <td>CPM</td>
+        </tr>
+        <tr>
+            <td id="result_cpm_to_urh">?</td>
+            <td>CPM &rarr; &micro;R/h ratio</td>
+        </tr>
+        <tr>
+            <td id="result_cpm_to_usvh">?</td>
+            <td>
+                <strong>CPM &rarr; &micro;Sv/h ratio</strong>
+                <small>used by <a href="https://sites.google.com/site/diygeigercounter/">DIYGeigerCounter</a></small>
+            </td>
+        </tr>
+        <tr>
+            <td id="result_cpm_to_urs">?</td>
+            <td>CPM &rarr; &micro;R/s ratio</td>
+        </tr>
+        <tr>
+            <td id="result_cpm_to_usvs">?</td>
+            <td>CPM &rarr; &micro;Sv/s ratio</td>
+        </tr>
+        <tr>
+            <td id="result_cps_to_urh">?</td>
+            <td>CPS &rarr; &micro;R/h ratio</td>
+        </tr>
+        <tr>
+            <td id="result_cps_to_usvh">?</td>
+            <td>CPS &rarr; &micro;Sv/h ratio</td>
+        </tr>
+        <tr>
+            <td id="result_cps_to_urs">?</td>
+            <td>CPS &rarr; &micro;R/s ratio</td>
+        </tr>
+        <tr>
+            <td id="result_cps_to_usvs">?</td>
+            <td>CPS &rarr; &micro;Sv/s ratio</td>
+        </tr>
+        <tr>
+            <td id="result_cps_to_10usv">?</td>
+            <td>
+                <strong>CPS &rarr; 10 &micro;Sv/h (1 mR/h) ratio</strong>
+                <small>used by <a href="https://sites.google.com/site/geigerbot/">Geiger Bot</a></small>
+            </td>
+        </tr>
+        <tr>
+            <td id="result_cps_per_urs">?</td>
+            <td><strong>CPS/uR/s</strong> <small>used in most soviet tube datasheets</small></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="text-muted muted-block">
+        <p>The <strong>Geiger-Muller tube</strong> (also known as a <strong>Geiger counter</strong>) is a device used to
+            detect and measure ionizing radiation, such as alpha, beta, and gamma <strong>radiation</strong>. The conversion
+            factor, in the context of a Geiger-Muller tube, is a value that represents the relationship between the number
+            of electrical pulses generated by the tube and the amount of ionizing radiation it detects.</p>
+
+        <p>The <strong>conversion factor</strong> is typically given in terms of counts per unit of radiation exposure or
+            dose. It is specific to the type of radiation being detected and the particular characteristics of the
+            Geiger-Muller tube. The conversion factor allows you to convert the <strong>electrical pulses</strong> produced
+            by the tube into a meaningful measure of radiation exposure, such as dose in units like
+            <strong>roentgens</strong> (R) or <strong>sieverts</strong> (Sv).</p>
+
+        <p>It's important to note that the conversion factor can vary between different types of Geiger-Muller tubes and the
+            specific radiation being detected. Therefore, it's essential to use the <strong>appropriate conversion
+                factor</strong> for your specific application and radiation source to get an accurate measurement of
+            radiation exposure or dose.</p>
     </div>
-
-    <button type="submit" class="btn btn-primary">Calculate</button>
-    <button type="reset" class="btn btn-secondary">Reset</button>
-</form>
-
-<h3>Results</h3>
-
-<p id="result" class="text-primary"></p>
-
-<table class="table table-bordered">
-    <tbody>
-    <tr>
-        <td id="result_urs">?</td>
-        <td>&micro;R/s</td>
-    </tr>
-    <tr>
-        <td id="result_urh">?</td>
-        <td>&micro;R/h</td>
-    </tr>
-    <tr>
-        <td id="result_usvs">?</td>
-        <td>&micro;Sv/s</td>
-    </tr>
-    <tr>
-        <td id="result_usvh">?</td>
-        <td>&micro;Sv/h</td>
-    </tr>
-    <tr>
-        <td id="result_cps">?</td>
-        <td>CPS</td>
-    </tr>
-    <tr>
-        <td id="result_cpm">?</td>
-        <td>CPM</td>
-    </tr>
-    <tr>
-        <td id="result_cpm_to_urh">?</td>
-        <td>CPM &rarr; &micro;R/h ratio</td>
-    </tr>
-    <tr>
-        <td id="result_cpm_to_usvh">?</td>
-        <td>
-            <strong>CPM &rarr; &micro;Sv/h ratio</strong>
-            <small>used by <a href="https://sites.google.com/site/diygeigercounter/">DIYGeigerCounter</a></small>
-        </td>
-    </tr>
-    <tr>
-        <td id="result_cpm_to_urs">?</td>
-        <td>CPM &rarr; &micro;R/s ratio</td>
-    </tr>
-    <tr>
-        <td id="result_cpm_to_usvs">?</td>
-        <td>CPM &rarr; &micro;Sv/s ratio</td>
-    </tr>
-    <tr>
-        <td id="result_cps_to_urh">?</td>
-        <td>CPS &rarr; &micro;R/h ratio</td>
-    </tr>
-    <tr>
-        <td id="result_cps_to_usvh">?</td>
-        <td>CPS &rarr; &micro;Sv/h ratio</td>
-    </tr>
-    <tr>
-        <td id="result_cps_to_urs">?</td>
-        <td>CPS &rarr; &micro;R/s ratio</td>
-    </tr>
-    <tr>
-        <td id="result_cps_to_usvs">?</td>
-        <td>CPS &rarr; &micro;Sv/s ratio</td>
-    </tr>
-    <tr>
-        <td id="result_cps_to_10usv">?</td>
-        <td>
-            <strong>CPS &rarr; 10 &micro;Sv/h (1 mR/h) ratio</strong>
-            <small>used by <a href="https://sites.google.com/site/geigerbot/">Geiger Bot</a></small>
-        </td>
-    </tr>
-    <tr>
-        <td id="result_cps_per_urs">?</td>
-        <td><strong>CPS/uR/s</strong> <small>used in most soviet tube datasheets</small></td>
-    </tr>
-    </tbody>
-</table>
-
-<div class="text-muted">
-    <p>The <strong>Geiger-Muller tube</strong> (also known as a <strong>Geiger counter</strong>) is a device used to
-        detect and measure ionizing radiation, such as alpha, beta, and gamma <strong>radiation</strong>. The conversion
-        factor, in the context of a Geiger-Muller tube, is a value that represents the relationship between the number
-        of electrical pulses generated by the tube and the amount of ionizing radiation it detects.</p>
-
-    <p>The <strong>conversion factor</strong> is typically given in terms of counts per unit of radiation exposure or
-        dose. It is specific to the type of radiation being detected and the particular characteristics of the
-        Geiger-Muller tube. The conversion factor allows you to convert the <strong>electrical pulses</strong> produced
-        by the tube into a meaningful measure of radiation exposure, such as dose in units like
-        <strong>roentgens</strong> (R) or <strong>sieverts</strong> (Sv).</p>
-
-    <p>It's important to note that the conversion factor can vary between different types of Geiger-Muller tubes and the
-        specific radiation being detected. Therefore, it's essential to use the <strong>appropriate conversion
-            factor</strong> for your specific application and radiation source to get an accurate measurement of
-        radiation exposure or dose.</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
