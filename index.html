@@ -50,11 +50,25 @@
             margin-bottom: 16px;
         }
 
+        .title-lockup {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
         .title-row h1 {
             font-size: clamp(1.4rem, 2.8vw, 2.4rem);
             letter-spacing: 0.04em;
             text-transform: uppercase;
             margin: 0;
+        }
+
+        .logo-radiation {
+            width: 56px;
+            height: 56px;
+            display: block;
+            flex: 0 0 auto;
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
         }
 
         .form-label-lite {
@@ -157,7 +171,16 @@
 <body class="container">
 <div class="sheet">
     <div class="title-row">
-        <h1>GM Tube Conversion Factor Calculator</h1>
+        <div class="title-lockup">
+            <svg class="logo-radiation" viewBox="0 0 64 64" aria-hidden="true" role="img">
+                <circle cx="32" cy="32" r="30" fill="#f6d24b" stroke="#12100b" stroke-width="2"/>
+                <path d="M19 9.5 A26 26 0 0 1 45 9.5 L36.5 24.2 A9 9 0 0 0 27.5 24.2 Z" fill="#12100b"/>
+                <path d="M19 9.5 A26 26 0 0 1 45 9.5 L36.5 24.2 A9 9 0 0 0 27.5 24.2 Z" fill="#12100b" transform="rotate(120 32 32)"/>
+                <path d="M19 9.5 A26 26 0 0 1 45 9.5 L36.5 24.2 A9 9 0 0 0 27.5 24.2 Z" fill="#12100b" transform="rotate(240 32 32)"/>
+                <circle cx="32" cy="32" r="6" fill="#12100b"/>
+            </svg>
+            <h1>GM Tube Conversion Factor Calculator</h1>
+        </div>
     </div>
 
     <form id="form" role="form" class="mb-4 panel">
@@ -317,8 +340,8 @@
         <h3 class="form-label-lite mb-2">Supported tubes</h3>
 
         <p>
-            <a class="tube-link" href="#sbm20Ra226">SBM-20 (СБМ-20) [Ra-226]</a>
-            <a class="tube-link" href="#sbm20Cs137">SBM-20 (СБМ-20) [Cs-137]</a>
+            <a class="tube-link" href="#sbm20:ra">SBM-20 (СБМ-20) [Ra-226]</a>
+            <a class="tube-link" href="#sbm20:cs">SBM-20 (СБМ-20) [Cs-137]</a>
             <a class="tube-link" href="#sbt9">SBT-9 (СБТ-9) [Cs-137]</a>
             <a class="tube-link" href="#sbt10a">SBT-10A (СБТ-10А) [Cs-137]</a>
             <a class="tube-link" href="#sbt11a">SBT-11A (СБТ-11А) [Cs-137]</a>
