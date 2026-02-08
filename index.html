@@ -132,6 +132,19 @@
             margin: 12px 0;
         }
 
+        .nixie {
+            font-style: normal;
+            font-family: "Share Tech Mono", "IBM Plex Mono", monospace;
+            color: #ffb24a !important;
+            text-shadow:
+                    0 0 2px rgba(255, 140, 0, 0.6),
+                    0 0 6px rgba(255, 120, 0, 0.5),
+                    0 0 12px rgba(255, 90, 0, 0.35);
+            background: #12100b !important;
+            padding: 0.1em 0.3em;
+            letter-spacing: 0.2em;
+        }
+
         @media (max-width: 768px) {
             .title-row {
                 flex-direction: column;
@@ -212,73 +225,73 @@
     <table class="table table-bordered">
         <tbody>
         <tr>
-            <td id="resultUrs">?</td>
+            <td><span id="resultUrs" class="nixie">?</span></td>
             <td>&micro;R/s</td>
         </tr>
         <tr>
-            <td id="resultUrh">?</td>
+            <td><span id="resultUrh" class="nixie">?</span></td>
             <td>&micro;R/h</td>
         </tr>
         <tr>
-            <td id="resultUsvs">?</td>
+            <td><span id="resultUsvs" class="nixie">?</span></td>
             <td>&micro;Sv/s</td>
         </tr>
         <tr>
-            <td id="resultUsvh">?</td>
+            <td><span id="resultUsvh" class="nixie">?</span></td>
             <td>&micro;Sv/h</td>
         </tr>
         <tr>
-            <td id="resultCps">?</td>
+            <td><span id="resultCps" class="nixie">?</span></td>
             <td>CPS</td>
         </tr>
         <tr>
-            <td id="resultCpm">?</td>
+            <td><span id="resultCpm" class="nixie">?</span></td>
             <td>CPM</td>
         </tr>
         <tr>
-            <td id="resultCpmToUrh">?</td>
+            <td><span id="resultCpmToUrh" class="nixie">?</span></td>
             <td>CPM &rarr; &micro;R/h ratio</td>
         </tr>
         <tr>
-            <td id="resultCpmToUsvh">?</td>
+            <td><span id="resultCpmToUsvh" class="nixie">?</span></td>
             <td>
                 <strong>CPM &rarr; &micro;Sv/h ratio</strong>
                 <small>used by <a href="https://sites.google.com/site/diygeigercounter/">DIYGeigerCounter</a></small>
             </td>
         </tr>
         <tr>
-            <td id="resultCpmToUrs">?</td>
+            <td><span id="resultCpmToUrs" class="nixie">?</span></td>
             <td>CPM &rarr; &micro;R/s ratio</td>
         </tr>
         <tr>
-            <td id="resultCpmToUsvs">?</td>
+            <td><span id="resultCpmToUsvs" class="nixie">?</span></td>
             <td>CPM &rarr; &micro;Sv/s ratio</td>
         </tr>
         <tr>
-            <td id="resultCpsToUrh">?</td>
+            <td><span id="resultCpsToUrh" class="nixie">?</span></td>
             <td>CPS &rarr; &micro;R/h ratio</td>
         </tr>
         <tr>
-            <td id="resultCpsToUsvh">?</td>
+            <td><span id="resultCpsToUsvh" class="nixie">?</span></td>
             <td>CPS &rarr; &micro;Sv/h ratio</td>
         </tr>
         <tr>
-            <td id="resultCpsToUrs">?</td>
+            <td><span id="resultCpsToUrs" class="nixie">?</span></td>
             <td>CPS &rarr; &micro;R/s ratio</td>
         </tr>
         <tr>
-            <td id="resultCpsToUsvs">?</td>
+            <td><span id="resultCpsToUsvs" class="nixie">?</span></td>
             <td>CPS &rarr; &micro;Sv/s ratio</td>
         </tr>
         <tr>
-            <td id="resultCpsTo10Usv">?</td>
+            <td><span id="resultCpsTo10Usv" class="nixie">?</span></td>
             <td>
                 <strong>CPS &rarr; 10 &micro;Sv/h (1 mR/h) ratio</strong>
                 <small>used by <a href="https://sites.google.com/site/geigerbot/">Geiger Bot</a></small>
             </td>
         </tr>
         <tr>
-            <td id="resultCpsPerUrs">?</td>
+            <td><span id="resultCpsPerUrs" class="nixie">?</span></td>
             <td><strong>CPS/uR/s</strong> <small>used in most soviet tube datasheets</small></td>
         </tr>
         </tbody>
