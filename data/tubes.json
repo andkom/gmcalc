@@ -8,10 +8,10 @@
       "dose": 4,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "second",
+      "dosePeriodUnit": "s",
       "count": 420,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -23,10 +23,10 @@
       "dose": 4,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "second",
+      "dosePeriodUnit": "s",
       "count": 260,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -38,10 +38,10 @@
       "dose": 5,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "second",
+      "dosePeriodUnit": "s",
       "count": 225,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -53,10 +53,10 @@
       "dose": 1,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "second",
+      "dosePeriodUnit": "s",
       "count": 385,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -68,10 +68,10 @@
       "dose": 1,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "second",
+      "dosePeriodUnit": "s",
       "count": 49,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -83,10 +83,10 @@
       "dose": 4,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "second",
+      "dosePeriodUnit": "s",
       "count": 41,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -98,10 +98,10 @@
       "dose": 1,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "second",
+      "dosePeriodUnit": "s",
       "count": 500,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -113,10 +113,10 @@
       "dose": 3,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "second",
+      "dosePeriodUnit": "s",
       "count": 685,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -127,10 +127,10 @@
       "dose": 1000,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "hour",
+      "dosePeriodUnit": "h",
       "count": 18,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   },
   {
@@ -141,10 +141,10 @@
       "dose": 1000,
       "doseUnit": "ur",
       "dosePeriod": 1,
-      "dosePeriodUnit": "hour",
+      "dosePeriodUnit": "h",
       "count": 60,
       "countPeriod": 1,
-      "countPeriodUnit": "second"
+      "countPeriodUnit": "s"
     }
   }
 ]

@@ -92,72 +92,77 @@
       return fixed.replace(/\.?0+$/, '');
     }
 
+    function pluralize(value, one, other) {
+      return Math.abs(value) === 1 ? one : other;
+    }
+
     try {
       checkInput(doseInput);
       checkInput(dosePeriodInput);
       checkInput(countInput);
       checkInput(countPeriodInput);
 
+      let doseUnitLabel, dosePeriodLabel, countPeriodLabel;
+      const countLabel = pluralize(count, 'count', 'counts');
+
       switch (doseUnit) {
         case 'ur':
           usvh = dose / 100;
+          doseUnitLabel = 'µR';
           break;
         case 'usv':
           usvh = dose;
+          doseUnitLabel = 'µSv';
           break;
         default:
           throw new Error('Invalid dose unit');
       }
 
       switch (dosePeriodUnit) {
-        case 'second':
+        case 's':
           usvh = usvh / (dosePeriod / 3600);
+          dosePeriodLabel = pluralize(dosePeriod, 'second', 'seconds');
           break;
-        case 'minute':
+        case 'm':
           usvh = usvh / (dosePeriod / 60);
+          dosePeriodLabel = pluralize(dosePeriod, 'minute', 'minutes');
           break;
-        case 'hour':
+        case 'h':
           usvh = usvh / dosePeriod;
+          dosePeriodLabel = pluralize(dosePeriod, 'hour', 'hours');
           break;
         default:
           throw new Error('Invalid dose period');
       }
 
       switch (countPeriodUnit) {
-        case 'second':
+        case 's':
           cpm = count / (countPeriod / 60);
+          countPeriodLabel = pluralize(countPeriod, 'second', 'seconds');
           break;
-        case 'minute':
+        case 'm':
           cpm = count / countPeriod;
+          countPeriodLabel = pluralize(countPeriod, 'minute', 'minutes');
           break;
-        case 'hour':
+        case 'h':
           cpm = count / (countPeriod * 60);
+          countPeriodLabel = pluralize(countPeriod, 'hour', 'hours');
           break;
         default:
           throw new Error('Invalid count period');
       }
 
+      const urs = usvh / 3600 * 100;
+      const urh = usvh * 100;
+      const usvs = usvh / 3600;
+      const cps = cpm / 60;
+
       result.classList.remove('text-danger');
-
-      function pluralize(value, one, other) {
-        return Math.abs(value) === 1 ? one : other;
-      }
-
-      const doseUnitLabel = doseUnit === 'ur' ? 'µR' : 'µSv';
-      const dosePeriodLabel = pluralize(dosePeriod, dosePeriodUnit, dosePeriodUnit + 's');
-      const countLabel = pluralize(count, 'count', 'counts');
-      const countPeriodLabel = pluralize(countPeriod, countPeriodUnit, countPeriodUnit + 's');
-
       result.textContent =
         formatNumber(dose, 2) + ' ' + doseUnitLabel + '/' +
         (dosePeriod !== 1 ? formatNumber(dosePeriod, 2) + ' ' : '') + dosePeriodLabel + ' = ' +
         formatNumber(count, 2) + ' ' + countLabel + '/' +
         (countPeriod !== 1 ? formatNumber(countPeriod, 2) + ' ' : '') + countPeriodLabel;
-
-      const urs = usvh / 3600 * 100;
-      const urh = usvh * 100;
-      const usvs = usvh / 3600;
-      const cps = cpm / 60;
 
       resultUrs.textContent = formatNumber(urs, 3);
       resultUrh.textContent = formatNumber(urh, 3);
