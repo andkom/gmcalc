@@ -1,6 +1,8 @@
 (() => {
-  const tube = document.querySelector('#tube');
+  let tubes = [];
+
   const form = document.querySelector('#form');
+  const tubeSelect = document.querySelector('#tube');
 
   const doseInput = document.querySelector('#dose');
   const doseUnitInput = document.querySelector('#doseUnit');
@@ -33,15 +35,21 @@
     resultCpmToUsvs, resultCpsToUrh, resultCpsToUsvh, resultCpsToUrs, resultCpsToUsvs, resultCpsTo10Usv, resultCpsPerUrs
   ];
 
-  function applyHash() {
-    const key = window.location.hash.replace(/^#/, '').trim();
+  function findTubeBySlug(slug) {
+    return tubes.find((tube) => tube.slug === slug);
+  }
 
-    if (!key || !key in tubes) {
+  function applyHash() {
+    const slug = window.location.hash.replace(/^#/, '').trim();
+    if (!slug) {
       return;
     }
-
-    tube.value = key;
-    tube.dispatchEvent(new Event('change', {bubbles: true}));
+    const tube = findTubeBySlug(slug);
+    if (!tube) {
+      return;
+    }
+    tubeSelect.value = slug;
+    tubeSelect.dispatchEvent(new Event('change', {bubbles: true}));
   }
 
   function calculate() {
@@ -177,28 +185,43 @@
     }
   }
 
-  Object.keys(tubes).forEach((key) => {
-    const option = document.createElement('option');
-    option.value = key;
-    option.textContent = tubes[key].name;
-    tube.appendChild(option);
-  });
+  function getTubeLabel(tube) {
+    const parts = [tube.name];
+    if (tube.originalName) {
+      parts.push('(' + tube.originalName + ')');
+    }
+    if (tube.source) {
+      parts.push('[' + tube.source + ']');
+    }
+    return parts.join(' ');
+  }
+
+  function populateTubes() {
+    tubes.forEach((tube) => {
+      const option = document.createElement('option');
+      option.value = tube.slug;
+      option.textContent = getTubeLabel(tube);
+      tubeSelect.appendChild(option);
+    });
+  }
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     calculate();
   });
 
-  tube.addEventListener('change', (event) => {
+  tubeSelect.addEventListener('change', (event) => {
     const key = event.target.value;
 
     if (key) {
-      const settings = tubes[key].settings;
-
-      Object.keys(settings).forEach((settingKey) => {
-        const input = document.querySelector('#' + settingKey);
+      const tube = findTubeBySlug(key);
+      if (!tube) {
+        return;
+      }
+      Object.entries(tube.data).forEach(([key, value]) => {
+        const input = document.querySelector('#' + key);
         if (input) {
-          input.value = settings[settingKey];
+          input.value = value;
         }
       });
 
@@ -220,6 +243,21 @@
 
   window.addEventListener('hashchange', applyHash);
 
-  applyHash();
-  calculate();
+  async function init() {
+    try {
+      const response = await fetch('data/tubes.json', {cache: 'no-cache'});
+      if (!response.ok) {
+        throw new Error('Failed to load tubes data');
+      }
+      tubes = await response.json();
+      populateTubes();
+      applyHash();
+      calculate();
+    } catch (err) {
+      result.classList.add('text-danger');
+      result.textContent = err.message || String(err);
+    }
+  }
+
+  init();
 })();

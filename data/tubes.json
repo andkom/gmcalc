@@ -1,0 +1,150 @@
+[
+  {
+    "slug": "sbm20ra",
+    "name": "SBM-20",
+    "originalName": "СБМ-20",
+    "source": "Ra-226",
+    "data": {
+      "dose": 4,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "second",
+      "count": 420,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "sbm20cs",
+    "name": "SBM-20",
+    "originalName": "СБМ-20",
+    "source": "Cs-137",
+    "data": {
+      "dose": 4,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "second",
+      "count": 260,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "sbt9",
+    "name": "SBT-9",
+    "originalName": "СБТ-9",
+    "source": "Cs-137",
+    "data": {
+      "dose": 5,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "second",
+      "count": 225,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "sbt10a",
+    "name": "SBT-10A",
+    "originalName": "СБТ-10А",
+    "source": "Cs-137",
+    "data": {
+      "dose": 1,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "second",
+      "count": 385,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "sbt11a",
+    "name": "SBT-11A",
+    "originalName": "СБТ-11А",
+    "source": "Cs-137",
+    "data": {
+      "dose": 1,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "second",
+      "count": 49,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "si3bg",
+    "name": "SI-3BG",
+    "originalName": "СИ-3БГ",
+    "source": "Cs-137",
+    "data": {
+      "dose": 4,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "second",
+      "count": 41,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "si8b",
+    "name": "SI-8B",
+    "originalName": "СИ-8Б",
+    "source": "Co-60",
+    "data": {
+      "dose": 1,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "second",
+      "count": 500,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "si22g",
+    "name": "SI-22G",
+    "originalName": "СИ-22Г",
+    "source": "Cs-137",
+    "data": {
+      "dose": 3,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "second",
+      "count": 685,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "lnd712",
+    "name": "LND 712",
+    "source": "Co-60",
+    "data": {
+      "dose": 1000,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "hour",
+      "count": 18,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  },
+  {
+    "slug": "lnd7317",
+    "name": "LND 7317",
+    "source": "Co-60",
+    "data": {
+      "dose": 1000,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "hour",
+      "count": 60,
+      "countPeriod": 1,
+      "countPeriodUnit": "second"
+    }
+  }
+]
