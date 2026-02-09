@@ -1,6 +1,6 @@
 [
   {
-    "slug": "sbm19ra",
+    "slug": "sbm-19-ra",
     "name": "SBM-19",
     "originalName": "СБМ-19",
     "source": "Ra-226",
@@ -15,7 +15,7 @@
     }
   },
   {
-    "slug": "sbm19cs",
+    "slug": "sbm-19-cs",
     "name": "SBM-19",
     "originalName": "СБМ-19",
     "source": "Cs-137",
@@ -30,7 +30,7 @@
     }
   },
   {
-    "slug": "sbm20ra",
+    "slug": "sbm-20-ra",
     "name": "SBM-20",
     "originalName": "СБМ-20",
     "source": "Ra-226",
@@ -45,7 +45,7 @@
     }
   },
   {
-    "slug": "sbm20cs",
+    "slug": "sbm-20-cs",
     "name": "SBM-20",
     "originalName": "СБМ-20",
     "source": "Cs-137",
@@ -60,7 +60,7 @@
     }
   },
   {
-    "slug": "sbm21ra",
+    "slug": "sbm-21-ra",
     "name": "SBM-21",
     "originalName": "СБМ-21",
     "source": "Ra-226",
@@ -75,7 +75,7 @@
     }
   },
   {
-    "slug": "sbm21cs",
+    "slug": "sbm-21-cs",
     "name": "SBM-21",
     "originalName": "СБМ-21",
     "source": "Cs-137",
@@ -90,7 +90,7 @@
     }
   },
   {
-    "slug": "sbt9",
+    "slug": "sbt-9",
     "name": "SBT-9",
     "originalName": "СБТ-9",
     "source": "Cs-137",
@@ -105,7 +105,7 @@
     }
   },
   {
-    "slug": "sbt10a",
+    "slug": "sbt-10a",
     "name": "SBT-10A",
     "originalName": "СБТ-10А",
     "source": "Cs-137",
@@ -120,7 +120,7 @@
     }
   },
   {
-    "slug": "sbt11a",
+    "slug": "sbt-11a",
     "name": "SBT-11A",
     "originalName": "СБТ-11А",
     "source": "Cs-137",
@@ -135,7 +135,7 @@
     }
   },
   {
-    "slug": "si3bg",
+    "slug": "si-3bg",
     "name": "SI-3BG",
     "originalName": "СИ-3БГ",
     "source": "Cs-137",
@@ -150,7 +150,7 @@
     }
   },
   {
-    "slug": "si8b",
+    "slug": "si-8b",
     "name": "SI-8B",
     "originalName": "СИ-8Б",
     "source": "Co-60",
@@ -165,7 +165,7 @@
     }
   },
   {
-    "slug": "si22g",
+    "slug": "si-22g",
     "name": "SI-22G",
     "originalName": "СИ-22Г",
     "source": "Cs-137",
@@ -180,7 +180,7 @@
     }
   },
   {
-    "slug": "lnd712",
+    "slug": "lnd-712",
     "name": "LND 712",
     "source": "Co-60",
     "data": {
@@ -194,7 +194,7 @@
     }
   },
   {
-    "slug": "lnd7317",
+    "slug": "lnd-7317",
     "name": "LND 7317",
     "source": "Co-60",
     "data": {
