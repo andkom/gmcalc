@@ -99,6 +99,16 @@
             box-shadow: 0 0 0 0.2rem rgba(30, 143, 79, 0.2);
         }
 
+        .form-select {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%231f1f1b' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 0.6rem center;
+        }
+
+        .input-group .form-select {
+            margin-left: -2px !important;
+        }
+
         .btn-primary {
             background: var(--green);
             border: 2px solid var(--ink);
@@ -194,42 +204,41 @@
 
         <div class="mb-1 form-label-lite">or input data from tube datasheet:</div>
 
-        <div class="row row-cols-lg-auto g-1 align-items-center mb-3">
-            <div class="col-12">
-                <input id="dose" type="text" value="0.17" class="form-control"/>
+        <div class="row  g-1 align-items-center mb-3">
+            <div class="col-12 col-lg-3">
+                <div class="input-group">
+                    <input id="dose" type="text" value="0.17" class="form-control"/>
+                    <select id="doseUnit" class="form-select">
+                        <option value="ur">&micro;R</option>
+                        <option value="usv" selected="selected">&micro;Sv</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-12">
-                <select id="doseUnit" class="form-select">
-                    <option value="ur">&micro;R</option>
-                    <option value="usv" selected="selected">&micro;Sv</option>
-                </select>
+            <div class="col-12 col-lg-auto text-center">/</div>
+            <div class="col-12 col-lg-3">
+                <div class="input-group">
+                    <input id="dosePeriod" type="text" value="1" class="form-control"/>
+                    <select id="dosePeriodUnit" class="form-select">
+                        <option value="second">Second</option>
+                        <option value="minute">Minute</option>
+                        <option value="hour" selected="selected">Hour</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-12 text-center">/</div>
-            <div class="col-12">
-                <input id="dosePeriod" type="text" value="1" class="form-control"/>
-            </div>
-            <div class="col-12">
-                <select id="dosePeriodUnit" class="form-select">
-                    <option value="second">Second</option>
-                    <option value="minute">Minute</option>
-                    <option value="hour" selected="selected">Hour</option>
-                </select>
-            </div>
-            <div class="col-12 text-center">=</div>
-            <div class="col-12">
+            <div class="col-auto text-center">=</div>
+            <div class="col-12 col-lg-1">
                 <input id="count" type="text" value="30" class="form-control"/>
             </div>
-            <div class="col-12 text-center">counts</div>
-            <div class="col-12">
-                <input id="countPeriod" type="text" value="1" class="form-control"/>
-            </div>
-            <div class="col-12 text-center">/</div>
-            <div class="col-12">
-                <select id="countPeriodUnit" class="form-select">
-                    <option value="second">Second</option>
-                    <option value="minute" selected="selected">Minute</option>
-                    <option value="hour">Hour</option>
-                </select>
+            <div class="col-12 col-lg-auto text-center">counts/</div>
+            <div class="col-12 col-lg-3">
+                <div class="input-group">
+                    <input id="countPeriod" type="text" value="1" class="form-control"/>
+                    <select id="countPeriodUnit" class="form-select">
+                        <option value="second">Second</option>
+                        <option value="minute" selected="selected">Minute</option>
+                        <option value="hour">Hour</option>
+                    </select>
+                </div>
             </div>
         </div>
 
