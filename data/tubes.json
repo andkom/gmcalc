@@ -1,5 +1,35 @@
 [
   {
+    "slug": "sbm19ra",
+    "name": "SBM-19",
+    "originalName": "СБМ-19",
+    "source": "Ra-226",
+    "data": {
+      "dose": 1,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "s",
+      "count": 440,
+      "countPeriod": 1,
+      "countPeriodUnit": "s"
+    }
+  },
+  {
+    "slug": "sbm19cs",
+    "name": "SBM-19",
+    "originalName": "СБМ-19",
+    "source": "Cs-137",
+    "data": {
+      "dose": 3,
+      "doseUnit": "ur",
+      "dosePeriod": 3,
+      "dosePeriodUnit": "s",
+      "count": 248,
+      "countPeriod": 1,
+      "countPeriodUnit": "s"
+    }
+  },
+  {
     "slug": "sbm20ra",
     "name": "SBM-20",
     "originalName": "СБМ-20",
@@ -25,6 +55,36 @@
       "dosePeriod": 1,
       "dosePeriodUnit": "s",
       "count": 260,
+      "countPeriod": 1,
+      "countPeriodUnit": "s"
+    }
+  },
+  {
+    "slug": "sbm21ra",
+    "name": "SBM-21",
+    "originalName": "СБМ-21",
+    "source": "Ra-226",
+    "data": {
+      "dose": 40,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "s",
+      "count": 420,
+      "countPeriod": 1,
+      "countPeriodUnit": "s"
+    }
+  },
+  {
+    "slug": "sbm21cs",
+    "name": "SBM-21",
+    "originalName": "СБМ-21",
+    "source": "Cs-137",
+    "data": {
+      "dose": 10,
+      "doseUnit": "ur",
+      "dosePeriod": 1,
+      "dosePeriodUnit": "s",
+      "count": 8,
       "countPeriod": 1,
       "countPeriodUnit": "s"
     }
